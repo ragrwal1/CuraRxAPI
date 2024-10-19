@@ -1,10 +1,7 @@
 import os
 from fastapi import FastAPI, HTTPException
 from supabase import create_client, Client
-from dotenv import load_dotenv
 
-# Load environment variables from .env file
-load_dotenv()
 
 app = FastAPI()
 
