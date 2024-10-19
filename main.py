@@ -1,11 +1,16 @@
-from fastapi import FastAPI, HTTPException
+import os
+from fastapi import FastAPI
 from supabase import create_client, Client
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = FastAPI()
 
-# Replace these with your actual Supabase URL and API key
-SUPABASE_URL = "https://qokpffyqqtpatedqimcy.supabase.co"
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFva3BmZnlxcXRwYXRlZHFpbWN5Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyOTM0NzQ1MSwiZXhwIjoyMDQ0OTIzNDUxfQ.YRgfP1pxqQ_2qUXQySt3OBRmf4RNlhAb_LhfY9lU6Hk"
+# Get Supabase credentials from environment variables
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 
 # Initialize Supabase client
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
